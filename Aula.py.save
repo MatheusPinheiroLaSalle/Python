@@ -1,0 +1,18 @@
+from socket import *
+
+s = socket ()
+
+pega = "GET /rj/ HTTP/1.1\r\n Host: unilasalle.edu.br\r\n"
+
+servidor="unilasalle.edu.br"
+porta=80
+
+s.connect((servidor, porta))
+s.send (pega)
+
+x = s.recv (1024)
+
+print (x)
+
+s.close ()
+
