@@ -19,8 +19,8 @@ def atende (conn, cliente):
 
 s = socket ()
 
-host = "10.10.13.1"
-porta = 8752
+host = "10.10.13.4"
+porta = 8753
 s.bind ((host, porta))
 s.listen (10)
 nthr = 0

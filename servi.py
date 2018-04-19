@@ -6,7 +6,7 @@ pega = "Oi, Tudo bem?"
 
 converte = str.encode(pega,"UTF-8")
 
-servidor="10.10.13.1"
+servidor="10.10.13.3"
 porta=8753
 
 s.connect((servidor, porta))
