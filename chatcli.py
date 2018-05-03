@@ -2,36 +2,23 @@ from socket import  *
 import threading
 import sys
 
-def recebe():
-        while True:
-                data = s.recv (4096)
-#                if len(data) == 0:
-#                        break
-                print (data.decode('UTF-8'))        
+
+nome = input ("Qual é o nome do arquivo?")
 
 s = socket ()
 
-#meusbytes=str.encode (minhastr, "UTF-8")
-#print (meusbytes)
-
-servidor="10.10.13.1"
-porta=8753
+servidor="10.10.13.3"
+porta=8752
 
 s.connect((servidor, porta))
-t = threading.Thread(target=recebe,args=())
-t.start()
 
-while True:
-        print ("Frase:", end=' ')
+s.send (str.encode (nome, "UTF-8"))
 
-        ss= input ()
-        if (ss == ' '):
-                continue		
-        if (ss == '\n'):
-                break
-                
-        s.send (str.encode(ss , "UTF-8"))
+f = open(nome,'r')
+for line in f:
+     s.send (str.encode( line , "UTF-8"))
 
 
 
 s.close ()
+

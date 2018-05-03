@@ -14,7 +14,7 @@ def atende (conn, cliente):
 
         print ("Fim da conexao com "+str(cliente))
 
-        conn.close
+        conn.close()
         
 
 s = socket ()
@@ -32,4 +32,4 @@ while True:
         nthr += 1
         print ("Criando thread "+str(nthr))
         t = Thread(target=atende,args=(conn, cliente,))
-t.start()
+        t.start()
