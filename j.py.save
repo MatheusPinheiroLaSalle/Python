@@ -1,0 +1,5 @@
+import json
+import requests
+
+req = requests.get("https://jsonplaceholder.typicode.com/posts")
+json.loads(req.te
