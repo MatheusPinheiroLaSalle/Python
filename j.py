@@ -1,6 +1,7 @@
 import json
 import requests
 
+
 nome = input ("nome?\n")
 user = requests.get("https://jsonplaceholder.typicode.com/users")
 req = requests.get("https://jsonplaceholder.typicode.com/posts")
@@ -17,4 +18,4 @@ for x in listnome:
 		break
 	else: 
 		print("Tem não")
-		break
+break
