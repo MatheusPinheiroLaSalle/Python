@@ -1,12 +1,12 @@
 import requests
 import urllib.parse
 
-nome=input("digite o nome do cliente: ")
-sobrenome=input("digite o sobrenome do cliente: ")
+nome=input("digite o nome do genero: ")
 
-api="http://127.0.0.1:5000/sd/"
+
+api="http://127.0.0.1:5000/cad/"
 #url1 = api+urllib.parse.urlencode({"nome":nome,"sobrenome":sobrenome})
-url1 = api+urllib.parse.quote(nome)+"/"+urllib.parse.quote(sobrenome)
+url1 = api+urllib.parse.quote(nome)
 
 print (url1)
 

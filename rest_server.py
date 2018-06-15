@@ -33,7 +33,7 @@ def imprime_cliente (nome=None):
 
 @app.route("/sd/<nome>/<sobrenome>")
 def imprime_cli (nome=None,sobrenome=None):
-    db_connect = create_engine('sqlite:///../chinook.db')
+    db_connect = create_engine('sqlite:///chinook.db')
     conn = db_connect.connect() # connect to database
     qstr = "select * from customers where FirstName=\'"+nome+"\' and LastName=\'"+sobrenome+"\'"
     print (qstr)
@@ -45,6 +45,28 @@ def imprime_cli (nome=None,sobrenome=None):
     #print (jret)
     return jret
 
+@app.route("/cad/<gen>")
+def cadastrar_gen (gen=None):
+    db_connect = create_engine('sqlite:///chinook.db')
+    conn = db_connect.connect() # connect to database
+#    qstr = "select Name from genres where Name=\'"+gen+"\'"
+    qstr = "insert into genres (name) values (\'"+gen+"\')"
+    query = conn.execute(qstr)
+    qstr2 = "select Name from genres where Name=\'"+gen+"\'"
+    query2 = conn.execute(qstr2)
+#    print (query)
+    result = [dict(zip(tuple (query2.keys()) ,i)) for i in query2.cursor]
+#    ret = query.fetchone()
+    jret = jsonify(result)
+#    print (jret)
+    return jret
+
+#    print (ret)
+#    if (ret == gen):
+#          print ("Já tem")
+#          break
+#    else
+#          query1= "INSERT INTO genres (Name) VALUES(gen)"
 
 #app.add_url_rule("/eca", "end_eca", imprime_eca)
 app.run() # inicia o servidor
